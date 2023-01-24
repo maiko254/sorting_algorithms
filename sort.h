@@ -25,5 +25,8 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void sorted_insert(listint_t **list, listint_t *newnode);
 void swap(int *a, int *b);
+int partition(int *array, int lo, int hi, size_t size);
+void lom_sort(int *array, int lo, int hi, size_t size);
+void swap(int *a, int *c);
 
 #endif /* SORT_H */

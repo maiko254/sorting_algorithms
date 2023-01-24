@@ -1,7 +1,4 @@
 #include "sort.h"
-int partition(int *array, int lo, int hi, size_t size);
-void lom_sort(int *array, int lo, int hi, size_t size);
-void swap(int *a, int *b);
 
 /**
  * quick_sort - sorts an array of integers in ascending order
@@ -44,11 +41,11 @@ void lom_sort(int *array, int lo, int hi, size_t size)
  * @a: integer to swap
  * @b: integer to swap
  */
-void swap(int *a, int *b)
+void swap(int *a, int *c)
 {
 	int t = *a;
-	*a = *b;
-	*b = t;
+	*a = *c;
+	*c = t;
 }
 
 /**
