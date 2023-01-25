@@ -39,7 +39,7 @@ void lom_sort(int *array, int lo, int hi, size_t size)
  * swap - swaps two integers
  *
  * @a: integer to swap
- * @b: integer to swap
+ * @c: integer to swap
  */
 void swap(int *a, int *c)
 {
@@ -60,25 +60,28 @@ void swap(int *a, int *c)
  */
 int partition(int *array, int lo, int hi, size_t size)
 {
-	int pivot = array[hi];
+	int i, j, *pivot;
 
-	int j, i = (lo - 1);
+	pivot = array + hi;
 
-	for (j = lo; j < hi; j++)
+	for (i = j = lo; j < hi; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < *pivot)
 		{
+			if (i < j)
+			{
+				swap(array + j, array + i);
+				print_array(array, size);
+			}
 			i++;
-			swap(&array[i], &array[j]);
-			print_array(array, size);
 		}
 	}
 
-	if (array[i + 1] > pivot)
+	if (array[i] > *pivot)
 	{
-		swap(&array[i + 1], &array[hi]);
+		swap(array + i, pivot);
 		print_array(array, size);
 	}
 
-	return (i + 1);
+	return (i);
 }
