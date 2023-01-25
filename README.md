@@ -7,3 +7,5 @@
 ### Task 2. Selection sort
 
 ### Task 3. Quick sort
+
+### Task 4. Shell sort - Knuth Sequence
