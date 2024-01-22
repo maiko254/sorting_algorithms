@@ -21,11 +21,12 @@ void swap(int *a, int *b)
  *                   and partitions the array into two subarrays based
  *                   on the pivot index
  * @array: the array to select pivot from
- * @low: index to determine of values smaller than pivot
- * @high: index to determine values greater than pivot
+ * @low: left most index of array
+ * @high: left most index of array
+ * @size: size of the array
  * Return: the selected pivot value
  */
-int lomutoPartition(int *array, int low, int high)
+int lomutoPartition(int *array, int low, int high, size_t size)
 {
 	int pivot, i, j;
 
@@ -38,6 +39,7 @@ int lomutoPartition(int *array, int low, int high)
 		{
 			i++;
 			swap(&array[i], &array[j]);
+			print_array(array, size);
 		}
 	}
 
@@ -49,22 +51,22 @@ int lomutoPartition(int *array, int low, int high)
  * quickSort - sorts an array using quick sort algorithm
  *             by recursively calling itself
  * @array: the array to sort
- * @low: index to determine of values smaller than pivot
- * @high: index to determine values greater than pivot
+ * @low: left most index of array
+ * @high: right most index of array
+ * @size: size of the array
  *
  * Return: void
  */
-void quickSort(int *array, int low, int high)
+void quickSort(int *array, int low, int high, size_t size)
 {
 	int partitionIndex;
 
 	if (low < high)
 	{
-		partitionIndex = lomutoPartition(array, low, high);
+		partitionIndex = lomutoPartition(array, low, high, size);
 
-		quickSort(array, low, partitionIndex - 1);
-		quickSort(array, partitionIndex + 1, high);
-		print_array(array, high);
+		quickSort(array, low, partitionIndex - 1, size);
+		quickSort(array, partitionIndex + 1, high, size);
 	}
 }
 
@@ -78,8 +80,8 @@ void quickSort(int *array, int low, int high)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size <= 1)
+	if (size < 2)
 		return;
 
-	quickSort(array, 0, size - 1);
+	quickSort(array, 0, size - 1, size);
 }
